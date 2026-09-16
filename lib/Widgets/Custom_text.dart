@@ -19,6 +19,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines:1 ,
       style: GoogleFonts.inter(
         textStyle: TextStyle(
           color: color,

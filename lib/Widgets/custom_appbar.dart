@@ -22,6 +22,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: preferredSize.height,
+      scrolledUnderElevation: 0.0,
       leading: SizedBox.shrink(),
       leadingWidth: 0.0,
       title: Row(

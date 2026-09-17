@@ -1,55 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class AnimationLine extends StatefulWidget {
-  @override
-  _AnimationLineState createState() => _AnimationLineState();
-}
+class AnimationLine extends StatelessWidget {
+  const AnimationLine({super.key, required this.animation});
 
-class _AnimationLineState extends State<AnimationLine>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    )..forward();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  final Animation<double> animation;
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: AnimatedBuilder(
-        animation: _controller,
-
-        builder: (_, __) {
-          return ShaderMask(
-            shaderCallback: (bounds) {
-              return LinearGradient(
-                begin: Alignment.centerRight,
-                end: Alignment.centerLeft,
-                stops: [_controller.value, 3.0, 4.0],
-                colors: [Colors.transparent, Colors.black, Colors.black],
-              ).createShader(bounds);
-            },
-            blendMode: BlendMode.dstIn,
-            child: SvgPicture.asset(
-              'assets/logo/line.svg',
-              color: Color(0xff000000),
-            ),
-          );
-        },
-      ),
+    return AnimatedBuilder(
+      animation: animation,
+      builder: (_, __) {
+        return ShaderMask(
+          shaderCallback: (bounds) {
+            return LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              stops: [0.0, animation.value, animation.value],
+              colors: const [Colors.black, Colors.black, Colors.transparent],
+            ).createShader(bounds);
+          },
+          blendMode: BlendMode.dstIn,
+          child: SvgPicture.asset(
+            'assets/logo/line.svg',
+            colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+            width: 120, // Explicit width for better visibility
+          ),
+        );
+      },
     );
   }
 }

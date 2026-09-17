@@ -1,21 +1,17 @@
+import 'package:fashion_store_app/Models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../data/category_data.dart';
 import 'Custom_text.dart';
 
 class CustomProductItem extends StatelessWidget {
   const CustomProductItem({
     super.key,
-    required this.name,
-    required this.price,
-    required this.image,
+    required this.product,
     required this.ontap,
   });
-  final String name;
-  final String price;
-  final String image;
-  final Function ()? ontap;
+  final ProductModel product;
+  final Function()? ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -27,42 +23,50 @@ class CustomProductItem extends StatelessWidget {
             width: 200,
             height: 255,
             decoration: BoxDecoration(
-              color: Color(0xffECECEC),
+              color: const Color(0xffECECEC),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Stack(
                 children: [
-                  Center(child: Image.asset(image)),
+                  Center(
+                    child: Image.asset(
+                      product.image,
+                      cacheWidth: 250, // Display width is ~200
+                    ),
+                  ),
                   Positioned(
                     bottom: 0,
                     right: 10,
                     left: 10,
-                    child: Image.asset('assets/images/shadow.png'),
+                    child: Image.asset(
+                      'assets/images/shadow.png',
+                      cacheWidth: 200,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
           CustomText(
-            text: name,
+            text: product.name,
             fontSize: 17,
             fontWeight: FontWeight.w400,
             color: Colors.black,
           ),
-          Gap(6),
+          const Gap(6),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
               CustomText(
-                text: price,
+                text: product.price,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.black,
               ),
-              Icon(Icons.favorite_border, color: Colors.black),
+              const Icon(Icons.favorite_border, color: Colors.black),
             ],
           ),
         ],

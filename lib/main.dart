@@ -1,4 +1,3 @@
-import 'package:fashion_store_app/Pages/product_details.dart';
 import 'package:flutter/material.dart';
 
 import 'Pages/splash.dart';
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: ProductDetails(),
+      home: const Splash(),
     );
   }
 }

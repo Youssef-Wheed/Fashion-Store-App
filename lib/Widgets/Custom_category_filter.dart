@@ -10,7 +10,7 @@ class CustomCategoryFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: Colors.black12),
         color: Colors.white,
@@ -19,26 +19,26 @@ class CustomCategoryFilter extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Row(
           children: [
-            CustomText(
+            const CustomText(
               text: 'Sort by',
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color: Color(0xff131313),
             ),
-            Gap(10),
+            const Gap(10),
             SvgPicture.asset('assets/svgs/select.svg'),
-            Spacer(),
+            const Spacer(),
             SvgPicture.asset('assets/svgs/filter.svg'),
-            Gap(10),
-            CustomText(
+            const Gap(10),
+            const CustomText(
               text: 'Filter',
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color: Color(0xff131313),
             ),
-            Gap(20),
+            const Gap(20),
             SvgPicture.asset('assets/svgs/grid.svg'),
-            Gap(20),
+            const Gap(20),
             SvgPicture.asset('assets/svgs/groups.svg'),
           ],
         ),

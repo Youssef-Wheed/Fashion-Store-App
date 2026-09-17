@@ -1,4 +1,4 @@
-import '../models/category_model.dart';
+import '../Models/category_model.dart';
 
 final List<CategoryModel> categoryList = [
   CategoryModel(image: 'assets/images/category/Women.png', name: 'Women'),

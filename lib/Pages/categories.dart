@@ -1,13 +1,10 @@
 import 'package:fashion_store_app/Pages/product_details.dart';
 import 'package:fashion_store_app/Widgets/Custom_category_filter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 import '../Widgets/Custom_product_item.dart';
-import '../Widgets/Custom_text.dart';
 import '../Widgets/custom_appbar.dart';
-import '../data/category_data.dart';
 import '../data/product_data.dart';
 
 class Categories extends StatelessWidget {
@@ -32,7 +29,8 @@ class Categories extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: GridView.builder(
                 itemCount: products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                addRepaintBoundaries: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 5,
                   mainAxisSpacing: 15,
@@ -41,10 +39,13 @@ class Categories extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final product = products[index];
                   return CustomProductItem(
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    ontap: () => Navigator.push(context, MaterialPageRoute(builder: (c)=> ProductDetails(item: product,))),
+                    product: product,
+                    ontap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) => ProductDetails(product: product),
+                      ),
+                    ),
                   );
                 },
               ),

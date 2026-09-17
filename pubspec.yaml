@@ -1,5 +1,5 @@
 name: fashion_store_app
-description: "A new Flutter project."
+description: "A modern and stylish Flutter application for a fashion store, featuring a smooth UI and rich media support."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -50,6 +50,20 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
 
+  # Used to generate app launcher icons for Android/iOS from a single source image.
+  flutter_launcher_icons: ^0.14.4
+
+# Configuration for the flutter_launcher_icons package.
+# Run `dart run flutter_launcher_icons` after editing this section or the
+# source image to (re)generate the app icons.
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  # Uncomment and provide separate images if you want an Android adaptive icon:
+  # adaptive_icon_background: "assets/icon/background.png"
+  # adaptive_icon_foreground: "assets/icon/foreground.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -69,6 +83,7 @@ flutter:
     - assets/logo/
     - assets/svgs/
     - assets/video/
+    - assets/icon/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

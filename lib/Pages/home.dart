@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
             right: 0,
             child: Container(
               width: double.infinity,
-              height: 150, // زودت الارتفاع شوية عشان يستوعب المحتوى
+              height: 150,
               color: Colors.white,
 
               child: Padding(
@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                       color: const Color(0xff131313),
                     ),
 
-                    const Gap(12), // قللت المسافة شوية
+                    const Gap(12),
 
                     // المساحة المتبقية فقط
                     Expanded(
@@ -97,13 +97,12 @@ class _HomeState extends State<Home> {
                         scrollDirection: Axis.horizontal,
                         physics: const BouncingScrollPhysics(),
                         itemCount: categoryList.length,
-
+                        addRepaintBoundaries: true,
                         itemBuilder: (context, index) {
                           final category = categoryList[index];
 
                           return Padding(
                             padding: const EdgeInsets.only(left: 12),
-
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -113,29 +112,26 @@ class _HomeState extends State<Home> {
                                   ),
                                 );
                               },
-
                               child: Column(
-                                mainAxisSize: MainAxisSize.min, // مهم يمنع الـ overflow
+                                mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Image.asset(
                                     category.image,
-                                    width: 65, // قللت الحجم شوية
+                                    width: 65,
                                     height: 65,
                                     fit: BoxFit.cover,
+                                    cacheWidth: 130,
                                   ),
-
-                                  const Gap(6), // قللت المسافة
-
+                                  const Gap(6),
                                   SizedBox(
                                     width: 75,
                                     child: Center(
                                       child: CustomText(
                                         text: category.name,
-                                        fontSize: 14, // قللت حجم الخط
+                                        fontSize: 14,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff131313),
-
                                       ),
                                     ),
                                   ),

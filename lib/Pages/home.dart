@@ -91,7 +91,6 @@ class _HomeState extends State<Home> {
 
                     const Gap(12),
 
-                    // المساحة المتبقية فقط
                     Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
